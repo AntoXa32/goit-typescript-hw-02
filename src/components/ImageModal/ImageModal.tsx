@@ -1,7 +1,17 @@
 import Modal from "react-modal";
 import css from "./ImageModal.module.css";
 
-export default function ImageModal({ isOpen, onRequestClose, imageUrl }) {
+interface ImageModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  imageUrl: string | null;
+}
+
+export default function ImageModal({
+  isOpen,
+  onRequestClose,
+  imageUrl,
+}: ImageModalProps) {
   return (
     <Modal
       isOpen={isOpen}
@@ -13,7 +23,9 @@ export default function ImageModal({ isOpen, onRequestClose, imageUrl }) {
       shouldCloseOnEsc={true}
     >
       <div className={css.modalContent}>
-        <img src={imageUrl} alt="Large format" className={css.largeImage} />
+        {imageUrl && (
+          <img src={imageUrl} alt="Large format" className={css.largeImage} />
+        )}
       </div>
     </Modal>
   );

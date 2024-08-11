@@ -3,7 +3,11 @@ import toast, { Toaster } from "react-hot-toast";
 import css from "./SearchBar.module.css";
 import { FaSearch } from "react-icons/fa";
 
-export default function SearchBar({ onSearch }) {
+interface SearchBarProps {
+  onSearch: (topic: string) => void;
+}
+
+export default function SearchBar({ onSearch }: SearchBarProps) {
   return (
     <header className={css.header}>
       <Toaster />

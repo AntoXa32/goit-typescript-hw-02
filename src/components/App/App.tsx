@@ -6,19 +6,20 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import Loader from "../Loader/Loader";
 import ImageModal from "../ImageModal/ImageModal";
+import { Image } from "../../types";
 
 export default function App() {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [topic, setTopic] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [hasMoreImages, setHasMoreImages] = useState(true);
+  const [images, setImages] = useState<Image[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [topic, setTopic] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [hasMoreImages, setHasMoreImages] = useState<boolean>(true);
   const expectedPageSize = 12;
 
-  const handleSearch = async (newTopic) => {
+  const handleSearch = async (newTopic: string) => {
     setImages([]);
     setPage(1);
     setTopic(newTopic);
@@ -29,7 +30,7 @@ export default function App() {
     setPage(page + 1);
   };
 
-  const handleImageClick = (imageUrl) => {
+  const handleImageClick = (imageUrl: string) => {
     setSelectedImage(imageUrl);
     setIsModalOpen(true);
   };
